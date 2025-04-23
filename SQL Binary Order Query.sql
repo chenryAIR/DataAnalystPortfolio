@@ -1,8 +1,8 @@
 SELECT 
   test_assignment,
-  SUM(order_binary) as order_count,
-  SUM(order_binary_non) as order_count_non,
-  COUNT(*) as order_count_N
+  SUM(order_binary)     AS order_count,
+  SUM(order_binary_non) AS order_count_non,
+  COUNT(*)              AS order_count_N
 FROM
 (
   SELECT 
@@ -15,7 +15,7 @@ FROM
     dsv1069.final_assignments AS f LEFT JOIN dsv1069.orders AS o
     ON 
       f.item_id = o.item_id AND
-      date(o.created_at) >= DATE(f.test_start_date) AND
+      DATE(o.created_at) >= DATE(f.test_start_date) AND
       DATE_PART('day',o.created_at - f.test_start_date) <= 30
   WHERE test_number = 'item_test_2'
   GROUP BY 
